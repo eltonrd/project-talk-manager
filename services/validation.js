@@ -57,7 +57,7 @@ function dateValidation(request, response, next) {
 
 function rateValidation(request, response, next) {
     const { talk } = request.body;
-    if (!talk.rate > 5 || !talk.rate < 1) {
+    if (talk.rate > 5 || talk.rate < 1) {
         return response.status(400).json({
             message: 'O campo "rate" deve ser um inteiro de 1 à 5',
         });
