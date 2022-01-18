@@ -10,7 +10,7 @@ function newTalker(request, response) {
         age,
         talk,
     };
-    fs.writeFile('./talker.json', JSON.stringify([...talkerJson, addTalker]));
+    fs.writeFileSync('./talker.json', JSON.stringify([...talkerJson, addTalker]));
             return response.status(201).send(addTalker);
         }
 module.exports = newTalker;

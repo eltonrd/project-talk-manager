@@ -29,8 +29,8 @@ app.post('/login', loginEmail, loginPassword, loginToken);
 app.post('/talker', tokenValidation, 
 nameValidation, 
 ageValidation,
-talkFullValidation,
 talkValidation,
+talkFullValidation,
 newTalker);
 
 app.listen(PORT, () => {
