@@ -4,6 +4,7 @@ const talker = require('./middlewares/talker');
 const newTalker = require('./middlewares/newTalker');
 const talkerId = require('./middlewares/talkerId');
 const editTalker = require('./middlewares/editTalker');
+const deleteTalker = require('./middlewares/deleteTalker');
 const { loginEmail, loginPassword, loginToken } = require('./middlewares/login');
 const { 
   tokenValidation, 
@@ -39,6 +40,8 @@ ageValidation,
 talkValidation,
 talkFullValidation,
 editTalker);
+app.delete('/talker/:id', tokenValidation,
+deleteTalker);
 
 app.listen(PORT, () => {
   console.log('Online');
