@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { talker, newTalker } = require('./middlewares/talker');
+const talker = require('./middlewares/talker');
+const newTalker = require('./middlewares/newTalker');
 const talkerId = require('./middlewares/talkerId');
 const { loginEmail, loginPassword, loginToken } = require('./middlewares/login');
 const { 
