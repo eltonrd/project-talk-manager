@@ -45,19 +45,15 @@ function ageValidation(request, response, next) {
     next();
 }
 
-function dateValidation(request, response, next) {
+function talkFullValidation(request, response, next) {
     const { talk } = request.body;
-    if (!dateValidationRegex(talk.watchedAt)) {
+    const { watchedAt, rate } = talk || {};
+    if (!dateValidationRegex(watchedAt)) {
         return response.status(400).json({
             message: 'O campo "watchedAt" deve ter o formato "dd/mm/aaaa"',
-        });
-    }
-    next();
+    });
 }
-
-function rateValidation(request, response, next) {
-    const { talk } = request.body;
-    if (talk.rate > 5 || talk.rate < 1) {
+    if (rate > 5 || rate < 1) { 
         return response.status(400).json({
             message: 'O campo "rate" deve ser um inteiro de 1 à 5',
         });
@@ -78,8 +74,7 @@ function talkValidation(request, response, next) {
 module.exports = { 
     tokenValidation, 
     nameValidation, 
-    ageValidation, 
-    dateValidation, 
-    rateValidation, 
+    ageValidation,
+    talkFullValidation,
     talkValidation,
  };

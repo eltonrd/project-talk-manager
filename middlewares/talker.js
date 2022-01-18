@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 function talker(_request, response, next) {
-    fs.readFile('./talker.json', 'utf8', (error, data) => {
+    fs.readFileSync('./talker.json', 'utf8', (error, data) => {
         if (error) {
             response.status(500).send(error);
         } else {
@@ -22,11 +22,8 @@ function newTalker(request, response) {
         talk,
     };
     talkerJson.push(addTalker);
-    fs.writeFile('./talker.json', JSON.stringify(talkerJson), (error) => {
-            if (error) { response.status(500).send(error); } else {
-                response.status(201).send(addTalker);
-            }
-        });
-}
+    fs.writeFileSync('./talker.json', JSON.stringify(talkerJson));
+            return response.status(201).send(addTalker);
+        }
 
 module.exports = { talker, newTalker };

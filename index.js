@@ -6,9 +6,8 @@ const { loginEmail, loginPassword, loginToken } = require('./middlewares/login')
 const { 
   tokenValidation, 
   nameValidation, 
-  ageValidation, 
-  dateValidation, 
-  rateValidation, 
+  ageValidation,
+  talkFullValidation, 
   talkValidation,
 } = require('./services/validation');
 
@@ -28,9 +27,8 @@ app.get('/talker/:id', talkerId);
 app.post('/login', loginEmail, loginPassword, loginToken);
 app.post('/talker', tokenValidation, 
 nameValidation, 
-ageValidation, 
-dateValidation, 
-rateValidation, 
+ageValidation,
+talkFullValidation,
 talkValidation,
 newTalker);
 
